@@ -26,6 +26,11 @@ const TodoList = () => {
     );
   };
 
+  //   update item
+  const updateItem = (e) => {
+    alert("clickd");
+  };
+
   return (
     <div>
       <h1>Todo List</h1>
@@ -38,6 +43,7 @@ const TodoList = () => {
               key={todo.id}
               id={todo.id}
               deleteItem={deleteItem}
+              updateItem={updateItem}
             />
           );
         })}

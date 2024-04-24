@@ -1,8 +1,18 @@
-import React from 'react'
+import React from "react";
 
-const Box = ({box}) => {
+const Box = ({ box, deleteBox, id }) => {
+  const removeBox = (e) => {
+    deleteBox(e);
+  
+  };
+
   return (
-<div style={box}></div>  )
-}
+    <div style={box}>
+      <button onClick={removeBox} id={id}>
+        X
+      </button>
+    </div>
+  );
+};
 
-export default Box
+export default Box;
