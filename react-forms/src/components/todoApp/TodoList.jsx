@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 import Todo from "./Todo";
 import NewTodoForm from "./NewTodoForm";
-import { v4 as uuidv4 } from "uuid";
 
 const TodoList = () => {
   const [todoList, setTodoList] = useState([
@@ -28,7 +29,18 @@ const TodoList = () => {
 
   //   update item
   const updateItem = (e) => {
-    alert("clickd");
+    let siblingID = e.target.previousSibling.previousSibling.id;
+    // 1. Find the todo with the provided id
+    const currentTodoIndex = todoList.findIndex(
+      (todo) => todo.id === siblingID
+    );
+    // 2. update the todo
+    const updatedTodo = Object.assign({}, todoList[currentTodoIndex]);
+    updatedTodo.todo = "this got updated";
+    // 3. Update the todo list with the updated todo
+    const newTodos = todoList.slice();
+    newTodos[currentTodoIndex] = updatedTodo;
+    setTodoList(newTodos);
   };
 
   return (
